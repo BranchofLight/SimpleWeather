@@ -57,9 +57,10 @@ function loadWeather(location, woeid) {
             html += "</div>";
           
             html += "<div class=\"row weatherPanel\">";
-            html += "<p class=\"weatherIcon col-md-6\">" + weatherCodes[weather.code] + "</p>";          
+            html += "<p class=\"weatherIcon col-md-6\">" + weatherCodes[weather.code] + "</p>";         
             html += "<div class=\"col-md-6  weatherMain\">";
             html += "<p id=\"location\">" + weather.city + ", " + weather.region + "</p>";
+            html += "<p>" + weather.currently + "</p>";            
             html += "<p><span class=\"degrees\">" + weather.temp + " " + weather.units.temp + "</span></p>";            
             setBackground(weather.temp);
             html += "<p><span class=\"humidity\">" + weather.humidity + "%</span></p>";
@@ -77,10 +78,10 @@ function loadWeather(location, woeid) {
             html += "</div>";
             html += "</div>";            
             $('#weather').append(html);
-          // Set weatherMain to the height of weatherPanel 
-          $('.weatherMain').css('height', $('.weatherPanel').css('height'));
-          // Call in case browser is already within limits
-          addTopBorder();
+            // Set weatherMain to the height of weatherPanel 
+            $('.weatherMain').css('height', $('.weatherPanel').css('height'));
+            // Call in case browser is already within limits
+            addTopBorder();
         },
         error: function (error) {
             $('#weather p').remove();
