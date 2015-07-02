@@ -1,7 +1,7 @@
 console.log("Hello World!");
 
 $(document).ready(function () {
-    /*if ("geolocation" in navigator) {
+    if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function (position) {
             loadWeather(position.coords.latitude + ',' + position.coords.longitude);
         });
@@ -9,9 +9,9 @@ $(document).ready(function () {
         $('#weather p').remove();
         $('#weather').append("<p id=\"geolocation-status\">Your Location Could Not Be Determined</p>");
         $('#weather').append("<button id=\"locationButton\">Find Your Location</button>");
-    }*/
+    }
   
-  loadWeather('Phoenix', '');
+  //loadWeather('Phoenix', '');
   
   $('#locationButton').on('click', function() {    
     if ("geolocation" in navigator) {
