@@ -24,20 +24,7 @@ $(document).ready(function () {
           $('#weather').append("<p id=\"geolocation-status\">Your Location Could Not Be Determined</p>");
           $('#weather').append("<button id=\"locationButton\">Find Your Location</button>");
     }
-  });
-
-  var addTopBorder = function() {    
-    // 992 is when the formatting changes - Bootstrap standard
-    console.log("Width: " + $(window).width());
-    if ($(window).width() < 992) {
-      $('.weatherMain').css('border-top', "2px solid black");
-    } else {
-      $('.weatherMain').css('border-top', "");
-    }
-  };
-
-  // Call in case browser is already within limits
-  addTopBorder();
+  });  
 
   $(window).resize(addTopBorder);
 
@@ -92,6 +79,8 @@ function loadWeather(location, woeid) {
             $('#weather').append(html);
           // Set weatherMain to the height of weatherPanel 
           $('.weatherMain').css('height', $('.weatherPanel').css('height'));
+          // Call in case browser is already within limits
+          addTopBorder();
         },
         error: function (error) {
             $('#weather p').remove();
@@ -113,5 +102,14 @@ function setBackground(temp) {
     $out.css('background', "#E6BA3D");
   } else if (temp >= 26) {
     $out.css('background', "#DE2D2B");
+  }
+};
+
+var addTopBorder = function() {    
+  // 992 is when the formatting changes - Bootstrap standard
+  if ($(window).width() < 992) {
+    $('.weatherMain').css('border-top', "2px solid black");
+  } else {
+    $('.weatherMain').css('border-top', "");
   }
 };
