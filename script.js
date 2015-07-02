@@ -11,7 +11,7 @@ $(document).ready(function () {
         $('#weather').append("<button id=\"locationButton\">Find Your Location</button>");
     }
   
-  //loadWeather('Phoenix', '');
+  //loadWeather('Renfrew, ON', '');
   
   $('#locationButton').on('click', function() {    
     if ("geolocation" in navigator) {
@@ -64,11 +64,12 @@ function loadWeather(location, woeid) {
             if (weather.wind.chill !== weather.temp) {
               html += "<p><span class=\"degrees\">" + weather.wind.chill + " " + weather.units.temp + "</span></p>";
             }
-            if (weather.heatindex !== weather.temp) {
+            // Certain locations would give strange heat indices (eg. 22C with heat index of 79C)
+            /*if (weather.heatindex !== weather.temp) {
               // Convert to celcius
               var heat = (weather.heatindex - 32) * 5/9;
               html += "<p><span class=\"degrees\">" + heat.toFixed(0) + " " + weather.units.temp + "</span></p>";
-            }
+            }*/
             
             
             html += "</div>";
