@@ -28,6 +28,7 @@ $(document).ready(function () {
 
   var addTopBorder = function() {    
     // 992 is when the formatting changes - Bootstrap standard
+    console.log("Width: " + $(window).width());
     if ($(window).width() < 992) {
       $('.weatherMain').css('border-top', "2px solid black");
     } else {
