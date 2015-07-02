@@ -26,6 +26,20 @@ $(document).ready(function () {
     }
   });
 
+  var addTopBorder = function() {    
+    // 992 is when the formatting changes - Bootstrap standard
+    if ($(window).width() < 992) {
+      $('.weatherMain').css('border-top', "2px solid black");
+    } else {
+      $('.weatherMain').css('border-top', "");
+    }
+  };
+
+  // Call in case browser is already within limits
+  addTopBorder();
+
+  $(window).resize(addTopBorder);
+
     /* test */
     /*$('#weather').after("<p id=\"geolocation-status\">Your Location Could Not Be Determined</p>");
 	$('#weather').replaceWith("<button id=\"location\">Find Your Location</button>");*/
