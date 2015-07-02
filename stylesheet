@@ -1,0 +1,117 @@
+body {
+    overflow: hidden;
+}
+
+#weather {
+    /*border: 1px solid black;*/
+    /* For vertical centering */
+    margin: auto;
+    width: 25%;    
+  
+    font-family: 'Slabo 27px', serif;
+}
+
+#weather {
+  text-align: center;
+}
+
+#weather > p {
+    text-align: center;
+}
+
+#weather * {
+    margin: auto;
+}
+
+.header {  
+  background: white;/*#D7DEE5;*/
+  border-radius: 30px;
+  color: black;
+  border: 2px solid black;
+}
+
+.header > :first-child {    
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.header > #updateTime {
+  text-align: right;
+  font-size: 10px;
+  margin-right: 15px;
+}
+
+.weatherPanel {
+  text-align: center;
+  border-radius: 30px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;  
+}
+
+.weatherMain {  
+  color: black;
+  background: white;
+  border-radius: 30px;
+  border-left: 2px solid black;
+} 
+
+#location {
+  font-size: 20px;
+}
+
+.tempInfo {
+  font-size: 16px;
+}
+
+.degrees {
+    font-weight: bold;
+    font-size: 22px;
+    color: black;
+}
+
+.humidity {  
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+
+/* For vertical centering */
+ .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+/* For vertical centering */
+ .middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#geolocation-status {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* Needed for the font that returns a weather icon */
+ @font-face {
+    font-family:'weather';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    */ font-weight: normal;
+    font-style: normal;
+}
+
+/* Needed for the font that returns a weather icon */
+ .weatherIcon {
+    color: #D5DBE1;
+    font-family: weather;
+    font-size: 150px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.0;
+    width: 158px;
+}
