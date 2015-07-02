@@ -11,7 +11,7 @@ $(document).ready(function () {
         $('#weather').append("<button id=\"locationButton\">Find Your Location</button>");
     }
   
-  //loadWeather('Renfrew, ON', '');
+  //loadWeather('Iqaluit', '');
   
   $('#locationButton').on('click', function() {    
     if ("geolocation" in navigator) {
@@ -57,13 +57,19 @@ function loadWeather(location, woeid) {
             html += "</div>";
           
             html += "<div class=\"row weatherPanel\">";
-            html += "<p class=\"weatherIcon col-md-6\">" + weatherCodes[weather.code] + "</p>";         
+            // In case error (3200) is returned
+            if (weather.code < weatherCodes.length) {
+              html += "<p class=\"weatherIcon col-md-6\">" + weatherCodes[weather.code] + "</p>"; 
+            } else {
+              html += "<span class=\"col-md-6\"></span>";
+            }
             html += "<div class=\"col-md-6  weatherMain\">";
             html += "<p id=\"location\">" + weather.city + ", " + weather.region + "</p>";
             html += "<p>" + weather.currently + "</p>";            
             html += "<p><span class=\"degrees\">" + weather.temp + " " + weather.units.temp + "</span></p>";            
             setBackground(weather.temp);
-            html += "<p><span class=\"humidity\">" + weather.humidity + "%</span></p>";
+            var hum = (weather.humidity.length === 0) ? hum = 0 : hum = weather.humidity;
+            html += "<p><span class=\"humidity\">" + hum + "%</span></p>";
             if (weather.wind.chill !== weather.temp) {
               html += "<p><span class=\"degrees\">" + weather.wind.chill + " " + weather.units.temp + "</span></p>";
             }
