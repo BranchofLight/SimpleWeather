@@ -116,9 +116,9 @@ var fixBorders = function() {
   // 992 is when the formatting changes - Bootstrap standard
   if ($(window).width() < 992) {
     $('.weatherMain').css('border-top', "2px solid black");
-    $('.weatherMain').css('border-left', "");
+    $('.weatherMain').css('border-left', "0px");
   } else {
-    $('.weatherMain').css('border-top', "");
+    $('.weatherMain').css('border-top', "0x");
     $('.weatherMain').css('border-left', "2px solid black");
   }
 };
