@@ -1,125 +1,234 @@
+html {
+	height: 100%;
+}
+
 body {
-    /* Used to prevent text being selected */
-    -webkit-user-select: none; /* Chrome/Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-	
-    overflow: hidden;
+	/* Used to prevent text being selected */
+	-webkit-user-select: none; /* Chrome/Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+
+	background: #C4C9D4;
+
+	height: 100%;
+	margin: auto;
+
+	overflow: hidden;
 }
 
 body * {
-    cursor: default;
+	cursor: default;
 }
 
-#weather {
-    /*border: 1px solid black;*/
-    /* For vertical centering */
-    margin: auto;
-    width: 25%;    
-  
-    font-family: 'Slabo 27px', serif;
+#main-container {
+	width: 100%;
+	height: 100%;
 }
 
-#weather {
-  text-align: center;
+#welcome {
+	width: 50%;
+
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+
+	text-align: center;
 }
 
-#weather > p {
-    text-align: center;
+#welcome h1, #end-game h1 {
+	color: #724580;
+	font-family: 'Arimo', sans-serif;
+	font-size: 2.5em;
 }
 
-#weather * {
-    margin: auto;
+#welcome h2 {
+	color: #724580;
+	font-family: 'Arimo', sans-serif;
+	font-size: 1.75em;
+	margin-top: 5%;
 }
 
-.header {  
-  background: white;/*#D7DEE5;*/
-  border-radius: 30px;
-  color: black;
-  border: 2px solid black;
+#error {
+	color: #CF2E26;
+	margin-bottom: -3%;
 }
 
-.header > :first-child {    
-  text-align: center;
-  font-weight: bold;
-  font-size: 20px;
+#diff-form label {
+	font-family: 'Arimo', sans-serif;
+	font-size: 1.1em;
+	cursor: pointer;
 }
 
-.header > #updateTime {
-  text-align: right;
-  font-size: 10px;
-  margin-right: 15px;
+#welcome p {
+	font-family: 'Arimo', sans-serif;
+	font-size: 1em;
+	margin-top: 2%;
 }
 
-.weatherPanel {
-  text-align: center;
-  border-radius: 30px;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
-  border-bottom: 2px solid black;  
+#row-select, #col-select, #mines-select {
+	display: inline;
+	font-family: 'Arimo', sans-serif;
+	font-size: 1em;
 }
 
-.weatherMain {  
-  color: black;
-  background: white;
-  border-radius: 30px;
-  border-left: 2px solid black;
-} 
-
-#location {
-  font-size: 20px;
+#row-input:hover, #col-input:hover, #mines-input {
+	cursor: text;
 }
 
-.tempInfo {
-  font-size: 16px;
+#header {
+	font-family: 'Arimo', sans-serif;
+	height: 10%;
+	margin: auto;
 }
 
-.degrees {
-    font-weight: bold;
-    font-size: 22px;
-    color: black;
+#timer {
+	float: left;
+	color: #724580;
+	/* font-size is scaled with JS */
 }
 
-.humidity {  
-  font-weight: bold;
-  font-size: 20px;
-  color: black;
+#flags-left {
+	float: right;
+	color: #724580;
+	/* font-size is scaled with JS */
 }
 
-/* For vertical centering */
- .outer {
-    display: table;
-    position: absolute;
-    height: 100%;
-    width: 100%;
+#game-field {
+	clear: both;
+	font-weight: bold;
+	margin: auto;
 }
 
-/* For vertical centering */
- .middle {
-    display: table-cell;
-    vertical-align: middle;
+.cell {
+	/* tiny.cc/clr for colours */
+	display: inline-block;
+
+	/* For aligning text */
+	text-align: center;
+	vertical-align: bottom;
+	box-sizing: border-box;
+
+	background: #6F7E9D;
+	font-family: 'Arimo', sans-serif;
+	/* Borders are added with JS to prevent overlap */
 }
 
-#geolocation-status {
-    font-size: 25px;
-    font-weight: bold;
+.cell.clicked:hover {
+	cursor: default;
 }
 
-/* Needed for the font that returns a weather icon */
- @font-face {
-    font-family:'weather';
-    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
-    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'), url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
-    */ font-weight: normal;
-    font-style: normal;
+.cell.clicked {
+	background: #D0D6E2;
 }
 
-/* Needed for the font that returns a weather icon */
- .weatherIcon {
-    color: #D5DBE1;
-    font-family: weather;
-    font-size: 150px;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1.0;
+/* Allows only certain cells to change on hover */
+.cell.not-clicked:hover {
+	cursor: pointer;
+	opacity: 0.5;
+}
+
+.cell.not-clicked:active {
+	opacity: 0.5;
+	background: #D0D6E2;
+}
+
+.cell.flagged {
+	background: #9F3A44;
+}
+
+#end-game {
+	margin-top: 8%;
+	text-align: center;
+}
+
+#end-game p {
+	font-family: 'Arimo', sans-serif;
+	font-size: 1.25em;
+}
+
+#end-game button:first-of-type {
+	margin-right: 3%;
+}
+
+.top-marg {
+	margin-top: 5%;
+}
+
+.center-button {
+	text-align: center;
+}
+
+.btn {
+  background: #8da1c7;
+  background-image: -webkit-linear-gradient(top, #8da1c7, #6f7e9d);
+  background-image: -moz-linear-gradient(top, #8da1c7, #6f7e9d);
+  background-image: -ms-linear-gradient(top, #8da1c7, #6f7e9d);
+  background-image: -o-linear-gradient(top, #8da1c7, #6f7e9d);
+  background-image: linear-gradient(to bottom, #8da1c7, #6f7e9d);
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  text-shadow: 2px 5px 4px #666666;
+  -webkit-box-shadow: 0px 1px 3px #666666;
+  -moz-box-shadow: 0px 1px 3px #666666;
+  box-shadow: 0px 1px 3px #666666;
+  font-family: 'Arimo', sans-serif;
+  color: #dbe6fc;
+  font-size: 15px;
+  padding: 11px;
+  border: solid #6f7e9d 2px;
+  text-decoration: none;
+	margin-top: 2%;
+}
+
+.btn:hover {
+  background: #6f7e9d;
+  text-decoration: none;
+	cursor: pointer;
+}
+
+.btn:active {
+	opacity: 0.8;
+}
+
+/* mine-number in text
+1 - light green
+2 - light blue
+3 - light red
+4 - orange
+5 - dark blue
+6 - dark purple
+7 - dark red
+8 - black */
+
+.mine-number-1 {
+	color: #3BA12D;
+}
+
+.mine-number-2 {
+	color: #54CDD1;
+}
+
+.mine-number-3 {
+	color: #B82E26;
+}
+
+.mine-number-4 {
+	color: #D17025;
+}
+
+.mine-number-5 {
+	color: #1D267F;
+}
+
+.mine-number-6 {
+	color: #6E21D1;
+}
+
+.mine-number-7 {
+	color: #87271F;
+}
+
+.mine-number-8 {
+	color: black;
 }
